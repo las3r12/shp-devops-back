@@ -17,8 +17,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${HUB_CRED_ID}", usernameVariable: "HUB_USERNAME", passwordVariable: "HUB_PASSWORD")]){
                     sh 'docker login -u ${HUB_USERNAME} -p ${HUB_PASSWORD}'
-                    sh 'push ${IMAGE_NAME}:${GIT_COMMIT}'
-                    sh 'push ${IMAGE_NAME}:latest'
+                    sh 'docker push ${IMAGE_NAME}:${GIT_COMMIT}'
+                    sh 'docker push ${IMAGE_NAME}:latest'
                 }
             }
         }
