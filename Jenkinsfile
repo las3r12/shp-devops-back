@@ -27,7 +27,7 @@ pipeline {
         stage ("deploy") {
             agent any
             steps {
-                withCrededntials([
+                withCredentials([
                     string(credentialsId: "production_ip", variable: "SERVER_IP"),
                     sshUserPrivateKey(credentialsId: "production_key", keyFileVariable: "SERVER_KEY", usernameVariable: "SERVER_USERNAME")
                     ]){
