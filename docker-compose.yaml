@@ -1,0 +1,6 @@
+version: '3'
+services:
+  backend:
+    image: 'las3r12/random_numbers'
+    ports:
+      - "8080:9095"
