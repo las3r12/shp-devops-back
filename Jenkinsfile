@@ -32,7 +32,7 @@ pipeline {
                     sshUserPrivateKey(credentialsId: "production_key", keyFileVariable: "SERVER_KEY", usernameVariable: "SERVER_USERNAME")
                     ]){
                         sh 'ssh -i ${SERVER_KEY} ${SERVER_USERNAME}@${SERVER_IP} mkdir -p ${PROJECT_DIR}'                        
-                        sh 'scp -i ${SERVER_KEY} ${SERVER_USERNAME}@${SERVER_IP} docker-compose.yaml ${SERVER_USERNAME}@${SERVER_IP}:${PROJECT_DIR}'
+                        sh 'scp -i ${SERVER_KEY} docker-compose.yaml ${SERVER_USERNAME}@${SERVER_IP}:${PROJECT_DIR}'
                         sh 'ssh -i ${SERVER_KEY} ${SERVER_USERNAME}@${SERVER_IP} docker-compose -f ${PROJECT_DIR}/docker-compose.yaml pull'
                         sh 'ssh -i ${SERVER_KEY} ${SERVER_USERNAME}@${SERVER_IP} docker-compose -f ${PROJECT_DIR}/docker-compose.yaml up'
                 }
